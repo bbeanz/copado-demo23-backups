@@ -10,10 +10,6 @@ global class Actions implements copado.CopadoDomain {
         get;
         set;
     }
-    global static copado.Actions.GitSnapshotService GitSnapshotService {
-        get;
-        set;
-    }
     global static copado.Actions.PackageCreateService PackageCreateService {
         get;
         set;
@@ -81,40 +77,6 @@ global class CommitService implements copado.CopadoService {
         return null;
     }
     global copado.Actions.StatusResult status(Id jobExecutionId) {
-        return null;
-    }
-}
-global class ConfigureGitSnapshotRequest implements copado.CopadoServiceRequest {
-    global String additionalInformation;
-    global String branch;
-    global String configurationFile;
-    global String credentialId;
-    global String cronExpression;
-    global String externalId;
-    global String pipelineId;
-    global String repositoryId;
-    global String scope;
-    global ConfigureGitSnapshotRequest() {
-
-    }
-}
-global class ConfigureGitSnapshotResult implements copado.CopadoServiceResult {
-    global copado__Git_Backup__c snapshot;
-    global ConfigureGitSnapshotResult() {
-
-    }
-}
-global class GitSnapshotService implements copado.CopadoService {
-    global GitSnapshotService() {
-
-    }
-    global copado.Actions.ConfigureGitSnapshotResult configure(copado.Actions.ConfigureGitSnapshotRequest request) {
-        return null;
-    }
-    global copado.Actions.StatusResult status(Id jobExecutionId) {
-        return null;
-    }
-    global copado.Actions.TakeGitSnapshotResult takeSnapshot(copado.Actions.TakeGitSnapshotRequest request) {
         return null;
     }
 }
@@ -200,7 +162,6 @@ global class PromotionDeploymentRequest implements copado.CopadoServiceRequest {
     global Boolean deploymentDryRun;
     global String otherInformation;
     global Id promotionId;
-    global Id transactionId;
     global PromotionDeploymentRequest() {
 
     }
@@ -232,7 +193,6 @@ global class PromotionRequest implements copado.CopadoServiceRequest {
     global Id projectId;
     global Id promotionId;
     global Id sourceEnvironmentId;
-    global Id transactionId;
     global List<Id> userStoryIds;
     global PromotionRequest() {
 
@@ -291,22 +251,6 @@ global class StatusResult implements copado.CopadoServiceResult {
     global String jobStatus;
     global List<copado__JobStep__c> steps;
     global StatusResult() {
-
-    }
-}
-global class TakeGitSnapshotRequest implements copado.CopadoServiceRequest {
-    global String actionCallback;
-    global String message;
-    global String otherInformation;
-    global String snapshotId;
-    global TakeGitSnapshotRequest() {
-
-    }
-}
-global class TakeGitSnapshotResult implements copado.CopadoServiceResult {
-    global copado__JobExecution__c jobExecution;
-    global copado__Git_Org_Commit__c snapshotCommit;
-    global TakeGitSnapshotResult() {
 
     }
 }

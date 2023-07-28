@@ -38,22 +38,20 @@
                     
                     var copadoUI = {};
             		copadoUI.messages = {};
-            		let notifyPermissionMsg = '{!JSENCODE($Label.Permission_set_needs_selected)}';
-            		copadoUI.messages.PermissionNotSelected = notifyPermissionMsg;
+            		copadoUI.messages.PermissionNotSelected = 'Permission Set needs to be selected.';
             		copadoUI.PermissionDropDown = document.getElementById('selectPermissions');
             		copadoUI.PERMISSION_SET_NAME = document.getElementById('{!$Component.theForm.if_PermissionSet}');
             
             
             		copadoUI.setPermSetDropDown = function(){
-                    	let _x = copadoAppLogic.data.PermissionSets;
-                        let selectPermissionSet = '{!JSENCODE($Label.Select_Permission)}';
+                    	var _x = copadoAppLogic.data.PermissionSets;
                         if(_x!=null){
                         	for(var i=0; i<_x.length; i++){
-                            	let tempVar = doOption('',selectPermissionSet);
-                                copadoUI.PermissionDropDown.add(tempVar);
+                            	var o = doOption('','Select a Permission Set');
+                                copadoUI.PermissionDropDown.add(o);
                             
                                 for(var i=0; i<_x.length; i++){
-                                    let opt = doOption(_x[i].Name, _x[i].Label+' ('+_x[i].Name+')');
+                                    var opt = doOption(_x[i].Name, _x[i].Label+' ('+_x[i].Name+')');
                                     copadoUI.PermissionDropDown.add(opt);
                                 }
                                 copadoUI.PermissionDropDown.remove(0);
